@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://makafis.github.io/sitemap.xml 
