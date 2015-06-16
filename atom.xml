@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://makafis.github.io/atom.xml" rel="self"/>
   <link href="http://makafis.github.io/"/>
-  <updated>2015-06-02T09:55:45-04:00</updated>
+  <updated>2015-06-16T19:34:13-04:00</updated>
   <id>http://makafis.github.io/</id>
   <author>
     <name><![CDATA[Vincent Alfieri]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My First Blog Post Ever and My Horrible Understanding of Regex]]></title>
+    <link href="http://makafis.github.io/blog/2015/06/16/my-first-blog-post-ever-and-my-horrible-understanding-of-regex/"/>
+    <updated>2015-06-16T18:17:24-04:00</updated>
+    <id>http://makafis.github.io/blog/2015/06/16/my-first-blog-post-ever-and-my-horrible-understanding-of-regex</id>
+    <content type="html"><![CDATA[<p>&ldquo;Im going to tell you how I feel before I get into regex.</p>
+
+<p>So far I am loving my time here at Flatiron. It is an amazing experience that I cannot get enough of. Its tough waking up at 5am to get here every morning but I know it is worth it. It is crazy how much material we have covered in only two weeks. I am excited to see what the next few weeks have in store.</p>
+
+<p>Now onto my horrible knowledge of REGEX!</p>
+
+<p>I hate regular expressions with a passion. It is some cryptic language that I have no desire to learn. Sadly, I should learn it soooooo here I am writing my first blog post about a topic I know nothing about. Rather than regurgitate every guide I read I will just share some things that caught my eye.</p>
+
+<p>What is a regular expression? It is a pattern to match in a string.  Sounds simple. Its NOT!</p>
+
+<p>Here are some rules to follow.
+Rule number 1.
+We do not talk about Regular Expressions.</p>
+
+<p>Rule number 2.
+We do NOT talk about Regular Expressions.</p>
+
+<p>:)</p>
+
+<p>REGEX is enclosed in //</p>
+
+<p>anything inside of the // will be searched for in a string. For example
+/x/ will match all x that appear in the string.
+/aeiou/ matches all vowels.
+/[^aeiou]/ matches all letters that are not vowels.</p>
+
+<p>The below statement takes a string of numbers and creates an array with each number having its own place in the array. You could have just called .split(&ldquo;&rdquo;) to get the same answer but regex looks cooler.</p>
+
+<blockquote><p>numbers = &ldquo;1234567&rdquo;
+ => &ldquo;1234567&rdquo;
+numbers.scan(/\d/)
+ => [&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;, &ldquo;4&rdquo;, &ldquo;5&rdquo;, &ldquo;6&rdquo;, &ldquo;7&rdquo;]</p></blockquote>
+
+<p> /^\d+/ matches any positive numbers</p>
+
+<p> /^-\d+/ matches any negative numbers</p>
+
+<p>lets disect this.
+^ means at the start of a line
+- is a character indicating negative(subtract) character
+\d means digits
++ match one or MORE occurances</p>
+
+<p>/[\d]$/ will give you the last number of any digit. So if you type in 50493028 it will match 8.</p>
+
+<p>/a[^aeiou]/ will match any &ldquo;a&rdquo; and any letter after it that is NOT a vowel.</p>
+
+<p>a crazy one I found is:
+/&lt;script[^>]<em>>[\w|\t|\r|\W]</em></script>/
+This finds ALL lines within script inside of an HTML document.<br/>
+Sounds good for scraping?</p>
+
+<p>SO BIG DEAL. Why do we need to know all of this random crap when .gsub can do all of this!?!?!?!?! technically you dont but stringing together tons of .gsub can get confusing plus it is an eyesore. I&rsquo;ll tell you.
+1. In my previous life when I learned how to work with Oracle databases and PL-SQL I was always told to store a specific type of data in the same format throughout that table. For example. If I store a phone number like this 555-555-5555 that means anyone else who has a phone number in this table must have it stored in that format. It makes it easier so that when we retrieve the data we can easily manipulate it without having to worry about its format.
+2. Validating email addresses. This seems to be the most difficult thing ever for regex. Google knows all.</p>
+
+<p>some awesome websites I have been using are:
+<a href="http://regexlib.com/">http://regexlib.com/</a>
+<a href="http://www.tutorialspoint.com/ruby/ruby_regular_expressions.htm">http://www.tutorialspoint.com/ruby/ruby_regular_expressions.htm</a>
+<a href="http://rubylearning.com/satishtalim/ruby_regular_expressions.html">http://rubylearning.com/satishtalim/ruby_regular_expressions.html</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Post on Octopress]]></title>
