@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://makafis.github.io/atom.xml" rel="self"/>
   <link href="http://makafis.github.io/"/>
-  <updated>2015-06-16T19:34:13-04:00</updated>
+  <updated>2015-06-30T20:13:25-04:00</updated>
   <id>http://makafis.github.io/</id>
   <author>
     <name><![CDATA[Vincent Alfieri]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[config.ru and Setting Your 404 Page]]></title>
+    <link href="http://makafis.github.io/blog/2015/06/30/config-dot-ru-and-setting-your-404-page/"/>
+    <updated>2015-06-30T17:54:56-04:00</updated>
+    <id>http://makafis.github.io/blog/2015/06/30/config-dot-ru-and-setting-your-404-page</id>
+    <content type="html"><![CDATA[<h2>config.ru<sub>Not the Russian website</sub></h2>
+
+
+<p>This file is required when using any type of Rack or Rails app.</p>
+
+<p>Instead of writing a script to start an application you can use Shotgun or Rackup to automatically launch the stack you have inside of your config.ru file.  The content of this file will tell the Rack::Builder what middleware should be used and in what order.</p>
+
+<p>Contents:
+You should require your environment.
+Next you should list your middleware stack. The lowest level of the stack uses the RUN command.
+All other stack controllers you wish to use are listed with the USE command.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">use</span> <span class="no">AnothernotsobigController</span>
+</span><span class='line'><span class="n">use</span> <span class="no">AnotherController</span>
+</span><span class='line'><span class="n">run</span> <span class="no">ApplicationController</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also change the port you run your application on during test.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">shotgun</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">6666</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h2>Creating your own custom 404 page in Sinatra!!!!!</h2>
+
+
+<p>I always wanted a slick and clever 404 page.</p>
+
+<p>Its pretty simple to implement.</p>
+
+<p>Sooooo inside of your main ApplicationController
+Just add the following code!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">set</span> <span class="ss">:show_exceptions</span><span class="p">,</span> <span class="kp">false</span>
+</span><span class='line'><span class="n">not_found</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">status</span> <span class="mi">404</span>
+</span><span class='line'>  <span class="n">erb</span> <span class="ss">:&#39;404&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A little explanation for line 1. Since we work in the Development environment the 404 page will never appear. To fix this you can either change environment in the environment.rb file or you can just change the :show_exceptions value to false.</p>
+
+<p>Now you must create a &lsquo;404&rsquo; erb file. This is simple HTML so you should already know how to do that. If not. Googles!</p>
+
+<p>And now whenever someone goes to a page that does not exist you will get an awesome 404 page.
+<img src="http://httpstatusrappers.com/images/404.png" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Blog Post Ever and My Horrible Understanding of Regex]]></title>

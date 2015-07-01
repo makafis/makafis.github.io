@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://makafis.github.io/blog/2015/06/30/config-dot-ru-and-setting-your-404-page/</loc>
+    <lastmod>2015-06-30T17:54:56-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://makafis.github.io/blog/2015/06/16/my-first-blog-post-ever-and-my-horrible-understanding-of-regex/</loc>
     <lastmod>2015-06-16T18:17:24-04:00</lastmod>
   </url>
