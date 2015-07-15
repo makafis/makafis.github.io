@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://makafis.github.io/atom.xml" rel="self"/>
   <link href="http://makafis.github.io/"/>
-  <updated>2015-06-30T20:13:25-04:00</updated>
+  <updated>2015-07-15T08:24:29-04:00</updated>
   <id>http://makafis.github.io/</id>
   <author>
     <name><![CDATA[Vincent Alfieri]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Form Helpers]]></title>
+    <link href="http://makafis.github.io/blog/2015/07/15/form-helpers/"/>
+    <updated>2015-07-15T08:11:08-04:00</updated>
+    <id>http://makafis.github.io/blog/2015/07/15/form-helpers</id>
+    <content type="html"><![CDATA[<p>So I am a week into Rails and I have little grasp on exactly what I can do with these forms. If Rails generates the HTML in our forms then we should be able to generate anything that you can write in HTML. Form Helpers are great for that. There are many different helpers that you can use to gather user input.</p>
+
+<p>Well lets start with the obvious. Form Helpers help you make forms!!
+form_for and form_tag are the two ways you can generate forms through Rails.</p>
+
+<p>Below is a list of some useful helpers that allow you to specify the types of data you expect from the user.</p>
+
+<p>password_field – Simple, makes your text box have the little password dots.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">password_field</span> <span class="ss">:name</span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>email_field – Lets you accept an email address where if a user types in www.google.com you will get <a href="http://www.google.com">http://www.google.com</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">email_field</span> <span class="ss">:website</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>number_field – This is really cool. It creates a number field where you can set minimum, maximum, and ranges.  Extremely useful if you want users to select a QTY in their cart but not to exceed a certain amount.
+range_field</p>
+
+<p>collection_select – create a drop down list to choose from.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">collection_select</span> <span class="ss">:tag_ids</span><span class="p">,</span> <span class="no">Tag</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">include_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Those are only a few that I think I will be using a lot in the future.</p>
+
+<p>Guess what&hellip;. I can now write some kick ass HTML without even knowing HTML!!</p>
+
+<p><img src="http://www.quickmeme.com/img/2a/2a4ac1cee5f34a3bc2c4e501ea90810fdb90e39cb12b46b67a0d545c1058d6c3.jpg" alt=""></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[config.ru and Setting Your 404 Page]]></title>
