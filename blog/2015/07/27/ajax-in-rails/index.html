@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ajax in Rails - My Octopress Blog</title>
+  <meta name="author" content="Vincent Alfieri">
+
+  
+  <meta name="description" content="Ajax is awesome. It lets you make cool things happen on your page without any need to reload your website. It increases the user experience and makes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://makafis.github.io/blog/2015/07/27/ajax-in-rails/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="makafis.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ajax in Rails</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-27T22:37:57-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Ajax is awesome. It lets you make cool things happen on your page without any need to reload your website. It increases the user experience and makes your app more interactive and appear magical. Luckily with Rails we do not have to exhaust ourselves with writing the same pattern of Ajax code over and over. Rails does it for us!</p>
+
+<p><img src="http://img.gawkerassets.com/img/17bya5m22xknejpg/original.jpg" alt="Clappy Cat"></p>
+
+<h3>Basic flow of Ajax</h3>
+
+
+<ol>
+    <li>A Trigger Fires (such as a button click or link click).</li>
+    <li>The Browser calls the server by sending the data that belongs to the trigger that fired.</li>
+    <li>Server processes the data and sends back an HTML string.</li>
+    <li>Browser receives our response and updates the specified part of the HTML code.</li>
+</ol>
+
+
+<p>In a Rails Form we can mark it with remote: true which automatically submits the form via Ajax rather than by the normal submit instructions. You can even add the remote: true to a link_to and button_to action.</p>
+
+<p>Here is an example of a form_for in Rails:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="vi">@person</span><span class="p">,</span> <span class="ss">remote</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  ...</span>
+</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Creates the following HTML code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">action=</span><span class="s">&quot;/articles&quot;</span> <span class="na">class=</span><span class="s">&quot;new_article&quot;</span> <span class="na">data-remote=</span><span class="s">&quot;true&quot;</span> <span class="na">id=</span><span class="s">&quot;new_article&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  ...
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here is an example of a link_to in Rails:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;a person&quot;</span><span class="p">,</span> <span class="vi">@person</span><span class="p">,</span> <span class="ss">remote</span><span class="p">:</span> <span class="kp">true</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Creates the following HTML code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/people/1&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">remote</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span><span class="n">a</span> <span class="n">person</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With the data-remote=&ldquo;true&rdquo; the form will now be submitted via Ajax.</p>
+
+<h3>Server Side</h3>
+
+
+<p>The only thing we really have to do is take care of the Ajax request on our server. To do this you add a respond_to block inside of your controller. You must then create a new .js.erb view to hold your javascript code. Using partials is extremely helpful since you will typically replace one <div> of HTML code with your response. Returning a partial lets construct your HTML code in Ruby rather than creating a long HTML string.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</span><span class='line'>    <span class="c1"># if the response fomat is HTML, redirect as usual. </span>
+</span><span class='line'>    <span class="c1">#This is great for those people who disable JS......</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="n">root_path</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># if the response format is JS we will have specific</span>
+</span><span class='line'>    <span class="c1"># instructions on how to handle the response.</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">js</span> <span class="p">{</span> <span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thats really all you have to do. Quite amazing I know.</p>
+
+<p>Sources: <a href="https://github.com/rails/jquery-ujs/wiki/ajax">https://github.com/rails/jquery-ujs/wiki/ajax</a>
+<a href="http://www.tutorialspoint.com/ruby-on-rails/rails-and-ajax.htm">http://www.tutorialspoint.com/ruby-on-rails/rails-and-ajax.htm</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Alfieri</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-27T22:37:57-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://makafis.github.io/blog/2015/07/27/ajax-in-rails/" data-via="vinnyalfieri" data-counturl="http://makafis.github.io/blog/2015/07/27/ajax-in-rails/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/15/form-helpers/" title="Previous Post: Form Helpers">&laquo; Form Helpers</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    Included file 'asides/twitter.html' not found in _includes directory
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Vincent Alfieri -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
