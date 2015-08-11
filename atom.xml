@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://makafis.github.io/atom.xml" rel="self"/>
   <link href="http://makafis.github.io/"/>
-  <updated>2015-08-11T09:15:46-04:00</updated>
+  <updated>2015-08-11T11:44:47-04:00</updated>
   <id>http://makafis.github.io/</id>
   <author>
     <name><![CDATA[Vincent Alfieri]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[TESTING NEW THEME]]></title>
+    <link href="http://makafis.github.io/blog/2015/08/11/testing-new-theme/"/>
+    <updated>2015-08-11T11:44:01-04:00</updated>
+    <id>http://makafis.github.io/blog/2015/08/11/testing-new-theme</id>
+    <content type="html"><![CDATA[<p>Testing 123</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Active Jobs]]></title>
