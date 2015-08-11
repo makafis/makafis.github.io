@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails Active Jobs - My Octopress Blog</title>
+  <meta name="author" content="Vincent Alfieri">
+
+  
+  <meta name="description" content="In some applications you may require a repitive job to be executed after a specific action or time period. Active Job allows us to schedule specific &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://makafis.github.io/blog/2015/08/10/rails-active-jobs/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="makafis.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails Active Jobs</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-10T17:36:46-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:36 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In some applications you may require a repitive job to be executed after a specific action or time period. Active Job allows us to schedule specific jobs that will execute automatically! Some of these tasks may be to send emails, clear a database, send a newsletter, generate a report, etc.</p>
+
+<p>Many large applications that handle images typically will run resource heavy jobs whenever server resources are available or in off hours. A common example is resizing images. Think about it. What if your app required 5 different sizes of the same image. You don&rsquo;t want to resize every single image uploaded as soon as it is uploaded! That can be crazy, especially during your sites peak hours. Instead you can schedule a job to run when your site traffic is low and your server resources are available.</p>
+
+<h3>Creating a Job:</h3>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">g</span> <span class="n">job</span> <span class="no">SuperImportantJob</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>creates</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">SuperimportantJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">queue_as</span> <span class="ss">:default</span>
+</span><span class='line'>  <span class="c1">#queue is automatically set to :default</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1"># Do something later</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">gather_all_user_external_data_evil</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>Using a Job...</h3>
+
+
+<p>To actually use this job you need can call it in your controller, or model&hellip;. model is probably best.
+Lets say you have a model for a User. Whenever a User is created we want to run a job that gets some data about them so we can sell better targeted ads.</p>
+
+<p>Below is the User Model where you define a method you wish to run at a later time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:email</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:facebook</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:instagram</span>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:twitter</span>
+</span><span class='line'>  <span class="n">after_create</span> <span class="ss">:gather_all_user_external_data</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">gather_all_user_external_data</span>
+</span><span class='line'>    <span class="c1">#scrape their facebook and save it all!!!!!</span>
+</span><span class='line'>    <span class="c1">#scrape their twitter and save it all!!!!!!</span>
+</span><span class='line'>    <span class="c1">#scrape their instagram and save it all!!!!</span>
+</span><span class='line'>    <span class="c1">#save it to the DB so we can sell some targeted ads!</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here is when we actually call the job to run. The SuperimportantJob is scheduled to run #gather_all_user_external_data after 24 hours.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">SuperimportantJob</span><span class="o">.</span><span class="n">enqueue_at</span><span class="p">(</span><span class="mi">24</span><span class="o">.</span><span class="n">hours</span><span class="o">.</span><span class="n">from_now</span><span class="p">,</span> <span class="n">user1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h3>Queue</h3>
+
+
+<p>The job queue. Active Job comes with a default queue which basically means that a job will run immediately unless you specify otherwise or add a queueing adapter to your backend. EX:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">SuperimportantJob</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">wait</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="n">weeks</span><span class="p">)</span><span class="o">.</span><span class="n">perform_later</span><span class="p">(</span><span class="n">gather_all_user_external_data</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Adding a Queue Adapter</h4>
+
+
+<p>If you want more control over your queue you can use an external adapter. Some popular adapters are sidekiq, and resque. It is simple to set up your queue adapter. Simply add the below code to your application.rb file. Sidekiq seems to be a popular choice.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">active_job</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:sidekiq</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Currently I do not have any practical uses for Jobs however I do see the value of having these when an application actually has some users or when I have to do the same thing everyday. Since we basically follow the convention of DRY (do not repeat yourself) in coding, we can follow this convention when we are executing code thanks to Jobs and Queues.</p>
+
+<p>Sources:
+<a href="http://guides.rubyonrails.org/active_job_basics.html">http://guides.rubyonrails.org/active_job_basics.html</a>
+<a href="https://blog.engineyard.com/2014/getting-started-with-active-job">https://blog.engineyard.com/2014/getting-started-with-active-job</a>
+<a href="https://github.com/RailsApps/rails-mailinglist-activejob">https://github.com/RailsApps/rails-mailinglist-activejob</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Alfieri</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-08-10T17:36:46-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:36 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://makafis.github.io/blog/2015/08/10/rails-active-jobs/" data-via="vinnyalfieri" data-counturl="http://makafis.github.io/blog/2015/08/10/rails-active-jobs/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/27/ajax-in-rails/" title="Previous Post: Ajax in Rails">&laquo; Ajax in Rails</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    Included file 'asides/twitter.html' not found in _includes directory
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Vincent Alfieri -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
