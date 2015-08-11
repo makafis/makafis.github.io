@@ -1,632 +1,123 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Vincent Alfieri">
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>A blogging framework for hackers.  | My Octopress Blog</title>
 
-  
-  <meta name="description" content="In some applications you may require a repitive job to be executed after a specific action or time period. Active Job allows us to schedule specific &hellip;">
-  
+<meta name="author" content="Vincent Alfieri"> 
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VINNY OCTOPRESS BLOG."> <meta name="keywords" content="">
 
-  
-  <link rel="canonical" href="http://makafis.github.io/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
 
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
-  
-    <h2>A blogging framework for hackers.</h2>
-  
-</hgroup>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<h4>A blogging framework for hackers.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:makafis.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="makafis.github.io">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/08/10/rails-active-jobs/">Rails Active Jobs</a></h1>
+	<div id="content" class="inner">
+
+<nav id="pagenavi">
     
     
-      <p class="meta">
-        
+    <div class="center"><a href="/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
+    Vincent Alfieri
 
-
-
-<time class='entry-date' datetime='2015-08-10T17:36:46-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In some applications you may require a repitive job to be executed after a specific action or time period. Active Job allows us to schedule specific jobs that will execute automatically! Some of these tasks may be to send emails, clear a database, send a newsletter, generate a report, etc.</p>
-
-<p>Many large applications that handle images typically will run resource heavy jobs whenever server resources are available or in off hours. A common example is resizing images. Think about it. What if your app required 5 different sizes of the same image. You don&rsquo;t want to resize every single image uploaded as soon as it is uploaded! That can be crazy, especially during your sites peak hours. Instead you can schedule a job to run when your site traffic is low and your server resources are available.</p>
-
-<h3>Creating a Job:</h3>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rails</span> <span class="n">g</span> <span class="n">job</span> <span class="no">SuperImportantJob</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>creates</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">SuperimportantJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">queue_as</span> <span class="ss">:default</span>
-</span><span class='line'>  <span class="c1">#queue is automatically set to :default</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-</span><span class='line'>    <span class="c1"># Do something later</span>
-</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">gather_all_user_external_data_evil</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h3>Using a Job...</h3>
-
-
-<p>To actually use this job you need can call it in your controller, or model&hellip;. model is probably best.
-Lets say you have a model for a User. Whenever a User is created we want to run a job that gets some data about them so we can sell better targeted ads.</p>
-
-<p>Below is the User Model where you define a method you wish to run at a later time.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:email</span>
-</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:name</span>
-</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:facebook</span>
-</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:instagram</span>
-</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:twitter</span>
-</span><span class='line'>  <span class="n">after_create</span> <span class="ss">:gather_all_user_external_data</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">gather_all_user_external_data</span>
-</span><span class='line'>    <span class="c1">#scrape their facebook and save it all!!!!!</span>
-</span><span class='line'>    <span class="c1">#scrape their twitter and save it all!!!!!!</span>
-</span><span class='line'>    <span class="c1">#scrape their instagram and save it all!!!!</span>
-</span><span class='line'>    <span class="c1">#save it to the DB so we can sell some targeted ads!</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here is when we actually call the job to run. The SuperimportantJob is scheduled to run #gather_all_user_external_data after 24 hours.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">SuperimportantJob</span><span class="o">.</span><span class="n">enqueue_at</span><span class="p">(</span><span class="mi">24</span><span class="o">.</span><span class="n">hours</span><span class="o">.</span><span class="n">from_now</span><span class="p">,</span> <span class="n">user1</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h3>Queue</h3>
-
-
-<p>The job queue. Active Job comes with a default queue which basically means that a job will run immediately unless you specify otherwise or add a queueing adapter to your backend. EX:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">SuperimportantJob</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">wait</span><span class="p">:</span><span class="mi">2</span><span class="o">.</span><span class="n">weeks</span><span class="p">)</span><span class="o">.</span><span class="n">perform_later</span><span class="p">(</span><span class="n">gather_all_user_external_data</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Adding a Queue Adapter</h4>
-
-
-<p>If you want more control over your queue you can use an external adapter. Some popular adapters are sidekiq, and resque. It is simple to set up your queue adapter. Simply add the below code to your application.rb file. Sidekiq seems to be a popular choice.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">active_job</span><span class="o">.</span><span class="n">queue_adapter</span> <span class="o">=</span> <span class="ss">:sidekiq</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Currently I do not have any practical uses for Jobs however I do see the value of having these when an application actually has some users or when I have to do the same thing everyday. Since we basically follow the convention of DRY (do not repeat yourself) in coding, we can follow this convention when we are executing code thanks to Jobs and Queues.</p>
-
-<p>Sources:
-<a href="http://guides.rubyonrails.org/active_job_basics.html">http://guides.rubyonrails.org/active_job_basics.html</a>
-<a href="https://blog.engineyard.com/2014/getting-started-with-active-job">https://blog.engineyard.com/2014/getting-started-with-active-job</a>
-<a href="https://github.com/RailsApps/rails-mailinglist-activejob">https://github.com/RailsApps/rails-mailinglist-activejob</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/27/ajax-in-rails/">Ajax in Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-27T22:37:57-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ajax is awesome. It lets you make cool things happen on your page without any need to reload your website. It increases the user experience and makes your app more interactive and appear magical. Luckily with Rails we do not have to exhaust ourselves with writing the same pattern of Ajax code over and over. Rails does it for us!</p>
-
-<p><img src="http://img.gawkerassets.com/img/17bya5m22xknejpg/original.jpg" alt="Clappy Cat"></p>
-
-<h3>Basic flow of Ajax</h3>
-
-
-<ol>
-    <li>A Trigger Fires (such as a button click or link click).</li>
-    <li>The Browser calls the server by sending the data that belongs to the trigger that fired.</li>
-    <li>Server processes the data and sends back an HTML string.</li>
-    <li>Browser receives our response and updates the specified part of the HTML code.</li>
-</ol>
-
-
-<p>In a Rails Form we can mark it with remote: true which automatically submits the form via Ajax rather than by the normal submit instructions. You can even add the remote: true to a link_to and button_to action.</p>
-
-<p>Here is an example of a form_for in Rails:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">form_for</span><span class="p">(</span><span class="vi">@person</span><span class="p">,</span> <span class="ss">remote</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  ...</span>
-</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Creates the following HTML code:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span> <span class="na">action=</span><span class="s">&quot;/articles&quot;</span> <span class="na">class=</span><span class="s">&quot;new_article&quot;</span> <span class="na">data-remote=</span><span class="s">&quot;true&quot;</span> <span class="na">id=</span><span class="s">&quot;new_article&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  ...
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here is an example of a link_to in Rails:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;a person&quot;</span><span class="p">,</span> <span class="vi">@person</span><span class="p">,</span> <span class="ss">remote</span><span class="p">:</span> <span class="kp">true</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-Creates the following HTML code:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/people/1&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">remote</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span><span class="n">a</span> <span class="n">person</span><span class="o">&lt;</span><span class="sr">/a&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>With the data-remote=&ldquo;true&rdquo; the form will now be submitted via Ajax.</p>
-
-<h3>Server Side</h3>
-
-
-<p>The only thing we really have to do is take care of the Ajax request on our server. To do this you add a respond_to block inside of your controller. You must then create a new .js.erb view to hold your javascript code. Using partials is extremely helpful since you will typically replace one <div> of HTML code with your response. Returning a partial lets construct your HTML code in Ruby rather than creating a long HTML string.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-</span><span class='line'>    <span class="c1"># if the response fomat is HTML, redirect as usual. </span>
-</span><span class='line'>    <span class="c1">#This is great for those people who disable JS......</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="n">root_path</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1"># if the response format is JS we will have specific</span>
-</span><span class='line'>    <span class="c1"># instructions on how to handle the response.</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">js</span> <span class="p">{</span> <span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Thats really all you have to do. Quite amazing I know.</p>
-
-<p>Sources: <a href="https://github.com/rails/jquery-ujs/wiki/ajax">https://github.com/rails/jquery-ujs/wiki/ajax</a>
-<a href="http://www.tutorialspoint.com/ruby-on-rails/rails-and-ajax.htm">http://www.tutorialspoint.com/ruby-on-rails/rails-and-ajax.htm</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/15/form-helpers/">Form Helpers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-15T08:11:08-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:11 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So I am a week into Rails and I have little grasp on exactly what I can do with these forms. If Rails generates the HTML in our forms then we should be able to generate anything that you can write in HTML. Form Helpers are great for that. There are many different helpers that you can use to gather user input.</p>
-
-<p>Well lets start with the obvious. Form Helpers help you make forms!!
-form_for and form_tag are the two ways you can generate forms through Rails.</p>
-
-<p>Below is a list of some useful helpers that allow you to specify the types of data you expect from the user.</p>
-
-<p>password_field – Simple, makes your text box have the little password dots.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">password_field</span> <span class="ss">:name</span><span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>email_field – Lets you accept an email address where if a user types in www.google.com you will get <a href="http://www.google.com">http://www.google.com</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">email_field</span> <span class="ss">:website</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>number_field – This is really cool. It creates a number field where you can set minimum, maximum, and ranges.  Extremely useful if you want users to select a QTY in their cart but not to exceed a certain amount.
-range_field</p>
-
-<p>collection_select – create a drop down list to choose from.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">collection_select</span> <span class="ss">:tag_ids</span><span class="p">,</span> <span class="no">Tag</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">include_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Those are only a few that I think I will be using a lot in the future.</p>
-
-<p>Guess what&hellip;. I can now write some kick ass HTML without even knowing HTML!!</p>
-
-<p><img src="http://www.quickmeme.com/img/2a/2a4ac1cee5f34a3bc2c4e501ea90810fdb90e39cb12b46b67a0d545c1058d6c3.jpg" alt=""></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/30/config-dot-ru-and-setting-your-404-page/">config.ru and Setting Your 404 Page</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-30T17:54:56-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:54 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>config.ru<sub>Not the Russian website</sub></h2>
-
-
-<p>This file is required when using any type of Rack or Rails app.</p>
-
-<p>Instead of writing a script to start an application you can use Shotgun or Rackup to automatically launch the stack you have inside of your config.ru file.  The content of this file will tell the Rack::Builder what middleware should be used and in what order.</p>
-
-<p>Contents:
-You should require your environment.
-Next you should list your middleware stack. The lowest level of the stack uses the RUN command.
-All other stack controllers you wish to use are listed with the USE command.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">use</span> <span class="no">AnothernotsobigController</span>
-</span><span class='line'><span class="n">use</span> <span class="no">AnotherController</span>
-</span><span class='line'><span class="n">run</span> <span class="no">ApplicationController</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can also change the port you run your application on during test.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">shotgun</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">6666</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<h2>Creating your own custom 404 page in Sinatra!!!!!</h2>
-
-
-<p>I always wanted a slick and clever 404 page.</p>
-
-<p>Its pretty simple to implement.</p>
-
-<p>Sooooo inside of your main ApplicationController
-Just add the following code!</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">set</span> <span class="ss">:show_exceptions</span><span class="p">,</span> <span class="kp">false</span>
-</span><span class='line'><span class="n">not_found</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">status</span> <span class="mi">404</span>
-</span><span class='line'>  <span class="n">erb</span> <span class="ss">:&#39;404&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>A little explanation for line 1. Since we work in the Development environment the 404 page will never appear. To fix this you can either change environment in the environment.rb file or you can just change the :show_exceptions value to false.</p>
-
-<p>Now you must create a &lsquo;404&rsquo; erb file. This is simple HTML so you should already know how to do that. If not. Googles!</p>
-
-<p>And now whenever someone goes to a page that does not exist you will get an awesome 404 page.
-<img src="http://httpstatusrappers.com/images/404.png" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/16/my-first-blog-post-ever-and-my-horrible-understanding-of-regex/">My First Blog Post Ever and My Horrible Understanding of Regex</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-16T18:17:24-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&ldquo;Im going to tell you how I feel before I get into regex.</p>
-
-<p>So far I am loving my time here at Flatiron. It is an amazing experience that I cannot get enough of. Its tough waking up at 5am to get here every morning but I know it is worth it. It is crazy how much material we have covered in only two weeks. I am excited to see what the next few weeks have in store.</p>
-
-<p>Now onto my horrible knowledge of REGEX!</p>
-
-<p>I hate regular expressions with a passion. It is some cryptic language that I have no desire to learn. Sadly, I should learn it soooooo here I am writing my first blog post about a topic I know nothing about. Rather than regurgitate every guide I read I will just share some things that caught my eye.</p>
-
-<p>What is a regular expression? It is a pattern to match in a string.  Sounds simple. Its NOT!</p>
-
-<p>Here are some rules to follow.
-Rule number 1.
-We do not talk about Regular Expressions.</p>
-
-<p>Rule number 2.
-We do NOT talk about Regular Expressions.</p>
-
-<p>:)</p>
-
-<p>REGEX is enclosed in //</p>
-
-<p>anything inside of the // will be searched for in a string. For example
-/x/ will match all x that appear in the string.
-/aeiou/ matches all vowels.
-/[^aeiou]/ matches all letters that are not vowels.</p>
-
-<p>The below statement takes a string of numbers and creates an array with each number having its own place in the array. You could have just called .split(&ldquo;&rdquo;) to get the same answer but regex looks cooler.</p>
-
-<blockquote><p>numbers = &ldquo;1234567&rdquo;
- => &ldquo;1234567&rdquo;
-numbers.scan(/\d/)
- => [&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;, &ldquo;4&rdquo;, &ldquo;5&rdquo;, &ldquo;6&rdquo;, &ldquo;7&rdquo;]</p></blockquote>
-
-<p> /^\d+/ matches any positive numbers</p>
-
-<p> /^-\d+/ matches any negative numbers</p>
-
-<p>lets disect this.
-^ means at the start of a line
-- is a character indicating negative(subtract) character
-\d means digits
-+ match one or MORE occurances</p>
-
-<p>/[\d]$/ will give you the last number of any digit. So if you type in 50493028 it will match 8.</p>
-
-<p>/a[^aeiou]/ will match any &ldquo;a&rdquo; and any letter after it that is NOT a vowel.</p>
-
-<p>a crazy one I found is:
-/&lt;script[^>]<em>>[\w|\t|\r|\W]</em></script>/
-This finds ALL lines within script inside of an HTML document.<br/>
-Sounds good for scraping?</p>
-
-<p>SO BIG DEAL. Why do we need to know all of this random crap when .gsub can do all of this!?!?!?!?! technically you dont but stringing together tons of .gsub can get confusing plus it is an eyesore. I&rsquo;ll tell you.
-1. In my previous life when I learned how to work with Oracle databases and PL-SQL I was always told to store a specific type of data in the same format throughout that table. For example. If I store a phone number like this 555-555-5555 that means anyone else who has a phone number in this table must have it stored in that format. It makes it easier so that when we retrieve the data we can easily manipulate it without having to worry about its format.
-2. Validating email addresses. This seems to be the most difficult thing ever for regex. Google knows all.</p>
-
-<p>some awesome websites I have been using are:
-<a href="http://regexlib.com/">http://regexlib.com/</a>
-<a href="http://www.tutorialspoint.com/ruby/ruby_regular_expressions.htm">http://www.tutorialspoint.com/ruby/ruby_regular_expressions.htm</a>
-<a href="http://rubylearning.com/satishtalim/ruby_regular_expressions.html">http://rubylearning.com/satishtalim/ruby_regular_expressions.html</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/06/02/my-first-post-on-octopress/">My First Post on Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-02T09:53:57-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:53 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&ldquo;Hello World&rdquo;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    Included file 'asides/twitter.html' not found in _includes directory
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Vincent Alfieri -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
+<br>
+Powered by Octopress.
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: School | My Octopress Blog]]></title>
+  <title><![CDATA[Category: school | My Octopress Blog]]></title>
   <link href="http://makafis.github.io/blog/categories/school/atom.xml" rel="self"/>
   <link href="http://makafis.github.io/"/>
-  <updated>2015-08-11T08:50:42-04:00</updated>
+  <updated>2015-08-11T09:14:35-04:00</updated>
   <id>http://makafis.github.io/</id>
   <author>
     <name><![CDATA[Vincent Alfieri]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
+    <title type="html"><![CDATA[my first post on Octopress]]></title>
     <link href="http://makafis.github.io/blog/2015/06/02/my-first-post-on-octopress/"/>
     <updated>2015-06-02T09:53:57-04:00</updated>
     <id>http://makafis.github.io/blog/2015/06/02/my-first-post-on-octopress</id>
